@@ -5,7 +5,7 @@ import typography from "@tailwindcss/typography";
 const srcDir = ".";
 
 export default {
-  darkMode: 'class',
+  darkMode: "class",
   content: [
     `${srcDir}/components/**/*.{vue,js,ts}`,
     `${srcDir}/layouts/**/*.vue`,

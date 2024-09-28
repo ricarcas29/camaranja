@@ -7,11 +7,39 @@ export default defineNuxtConfig({
   pages: true,
   ssr: true,
 
-  // // Extender Nuxt Studio si está habilitado
-  // $production: {
-  //   extends: process.env.NUXT_STUDIO_ENABLE ? "@nuxthq/studio" : undefined,
-  //   ssr: true,
-  // },
+  build: {
+    extractCSS: true,
+    optimization: {
+      splitChunks: {
+        layouts: true,
+        pages: true,
+        commons: true,
+      },
+    },
+    transpile: ["vue-lazy-hydration", "intersection-observer"],
+    postcss: {
+      plugins: {
+        "postcss-import": {},
+        "postcss-url": {},
+        "postcss-preset-env": {
+          stage: 2,
+          features: {
+            "focus-within-pseudo-class": false,
+          },
+        },
+        cssnano: { preset: "default" },
+      },
+    },
+  },
+  render: {
+    http2: {
+      push: true,
+      pushAssets: (req, res, publicPath, preloadFiles) => preloadFiles.filter((f) => f.asType === "script" && f.file === "runtime.js").map((f) => `<${publicPath}${f.file}>; rel=preload; as=${f.asType}`),
+    },
+    compressor: {
+      threshold: 0,
+    },
+  },
 
   htmlAttrs: {
     lang: "es",
@@ -92,7 +120,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/'],
+      routes: ["/"],
       failOnError: false,
     },
   },
@@ -107,8 +135,7 @@ export default defineNuxtConfig({
     },
   },
 
-
-  ...(process.env.NUXT_STUDIO_ENABLE ? { extends: '@nuxthq/studio' } : {}),
+  ...(process.env.NUXT_STUDIO_ENABLE ? { extends: "@nuxthq/studio" } : {}),
 
   // Fecha de compatibilidad
   compatibilityDate: "2024-09-23",
