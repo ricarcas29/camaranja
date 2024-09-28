@@ -36,7 +36,7 @@ export default defineNuxtConfig({
 
   // Configuración de la aplicación
   app: {
-    baseURL: process.env.BASE_URL ?? "/camaranja/",
+    baseURL: process.env.NUXT_APP_BASE_URL || "/camaranja/",
     buildAssetsDir: "/_nuxt/",
     head: {
       link: [
@@ -90,10 +90,9 @@ export default defineNuxtConfig({
 
   // Configuración de Nitro para la generación estática
   nitro: {
-    baseURL: process.env.BASE_URL ?? "/camaranja", // Cambia esto si realmente necesitas el prefijo /camaranja/
     prerender: {
       crawlLinks: true,
-      routes: ["/"], // Asegúrate de incluir las rutas principales
+      routes: ['/'],
       failOnError: false,
     },
   },
@@ -107,6 +106,9 @@ export default defineNuxtConfig({
       logo: "img/logo.jpg",
     },
   },
+
+
+  ...(process.env.NUXT_STUDIO_ENABLE ? { extends: '@nuxthq/studio' } : {}),
 
   // Fecha de compatibilidad
   compatibilityDate: "2024-09-23",

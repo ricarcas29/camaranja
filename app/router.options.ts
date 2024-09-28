@@ -6,7 +6,6 @@ export default <RouterConfig>{
       return savedPosition;
     }
     
-    // if both from and to paths contain /galleries then scroll to top
     if (from.path.includes('/galleries') && to.path.includes('/galleries')) {
       return { top: 0 };
     }
@@ -14,12 +13,13 @@ export default <RouterConfig>{
     return { top: 0 };
   },
   routes: (_routes) => {
-    const baseRoutes = _routes.map(route => {
-      return {
+    if (process.env.NUXT_APP_BASE_URL && process.env.NUXT_APP_BASE_URL !== '/') {
+      const baseRoutes = _routes.map(route => ({
         ...route,
-        path: `/camaranja${route.path}`
-      }
-    });
-    return [...baseRoutes, ..._routes];
+        path: `${process.env.NUXT_APP_BASE_URL}${route.path}`
+      }));
+      return baseRoutes;
+    }
+    return _routes;
   }
 };
