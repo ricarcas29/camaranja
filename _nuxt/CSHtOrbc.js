@@ -1,0 +1,1 @@
+import{_ as s}from"./vUHAljMW.js";import{d as a,c as r,Q as t,h as n}from"./BZMwEppH.js";const _=a({__name:"BlogImage",props:{src:{},alt:{}},setup(c){return(e,l)=>{const o=s;return e.src?(r(),t(o,{key:0,placeholder:"",sizes:"sm:100vw md:70vw",class:"w-full",src:e.src,alt:e.alt,loading:"lazy"},null,8,["src","alt"])):n("",!0)}}});export{_ as default};
