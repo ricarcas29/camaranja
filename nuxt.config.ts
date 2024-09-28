@@ -17,7 +17,7 @@ export default defineNuxtConfig({
     lang: "es",
   },
 
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon", "@nuxthq/studio"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon", /*"@nuxthq/studio"*/],
 
   // Configuración de imágenes
   image: {
@@ -89,9 +89,10 @@ export default defineNuxtConfig({
 
   // Configuración de Nitro para la generación estática
   nitro: {
-    baseURL: process.env.BASE_URL ?? "/camaranja/",
+    baseURL: process.env.BASE_URL ?? "/",  // Cambia esto si realmente necesitas el prefijo /camaranja/
     prerender: {
       crawlLinks: true,
+      routes: ['/'],  // Asegúrate de incluir las rutas principales
       failOnError: false,
     },
   },
