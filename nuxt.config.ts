@@ -1,12 +1,10 @@
-
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 
 // Cargar variables de entorno
-dotenv.config()
+dotenv.config();
 
 export default defineNuxtConfig({
   pages: true,
-
 
   ssr: true,
 
@@ -14,15 +12,7 @@ export default defineNuxtConfig({
     lang: "es",
   },
 
-  modules: [
-    "@nuxtjs/tailwindcss",
-    "@nuxt/image-edge",
-    "nuxt-headlessui",
-    "@nuxt/content",
-    "@vueuse/nuxt",
-    "@nuxtjs/color-mode",
-    "@nuxt/icon",
-  ],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon"],
 
   image: {
     inject: true,
@@ -47,7 +37,7 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: '/camaranja/',
+    //baseURL: '/camaranja/',
     head: {
       link: [
         {
@@ -97,11 +87,9 @@ export default defineNuxtConfig({
     baseURL: process.env.BASE_URL ?? "/camaranja/",
     prerender: {
       crawlLinks: true,
-      failOnError: false, 
+      failOnError: false,
     },
   },
-
-
 
   schemaOrg: {
     identity: {
