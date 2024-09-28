@@ -37,7 +37,7 @@ jobs:
         run: pnpm install
 
       - name: Install @nuxthq/studio
-        run: pnpm add -D @nuxthq/studio
+        run: pnpm install @nuxthq/studio
 
       - name: Create .nuxtrc
         run: echo $'\nautoImport=true\nmodules[]=@nuxthq/studio' >> .nuxtrc

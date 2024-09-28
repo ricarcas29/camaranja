@@ -5,10 +5,13 @@ dotenv.config();
 
 export default defineNuxtConfig({
   pages: true,
-
   ssr: true,
 
-  extends: process.env.NUXT_STUDIO_ENABLE ? "@nuxthq/studio" : undefined,
+  // Extender Nuxt Studio si está habilitado
+  $production: {
+    extends: process.env.NUXT_STUDIO_ENABLE ? "@nuxthq/studio" : undefined,
+    ssr: true,
+  },
 
   htmlAttrs: {
     lang: "es",
@@ -16,19 +19,12 @@ export default defineNuxtConfig({
 
   modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon", "@nuxthq/studio"],
 
+  // Configuración de imágenes
   image: {
     inject: true,
     format: ["webp"],
     domains: ["localhost", "camaranja.nuxt.space.com"],
     dir: "public",
-    // providers: {
-    //   ipx: {
-    //     provider: "ipx",
-    //     options: {
-    //       baseURL: "/_ipx/",
-    //     },
-    //   },
-    // },
     presets: {
       default: {
         modifiers: {
@@ -38,10 +34,9 @@ export default defineNuxtConfig({
     },
   },
 
+  // Configuración de la aplicación
   app: {
-    //baseURL: process.env.NODE_ENV === "production" ? process.env.BASE_URL || "/camaranja/" : "/",
     buildAssetsDir: "/_nuxt/",
-
     head: {
       link: [
         {
@@ -60,6 +55,7 @@ export default defineNuxtConfig({
     },
   },
 
+  // Configuración del contenido
   content: {
     documentDriven: true,
     markdown: {
@@ -67,26 +63,31 @@ export default defineNuxtConfig({
     },
   },
 
+  // Configuración del modo oscuro
   colorMode: {
     classSuffix: "",
   },
 
+  // Configuración de Tailwind CSS
   tailwindcss: {
     cssPath: "./assets/css/tailwind.css",
   },
 
+  // Configuración de iconos
   icon: {
     size: [16, 32, 120],
     purpose: ["any", "maskable"],
   },
 
+  // Información del sitio
   site: {
     url: process.env.BASE_URL,
     name: "Kenia Espinoza Alba Portfolio",
-    description: "Conoceme, contactame, creemos recuerdos juntos!",
+    description: "Conóceme, contáctame, ¡creemos recuerdos juntos!",
     defaultLocale: "es",
   },
 
+  // Configuración de Nitro para la generación estática
   nitro: {
     baseURL: process.env.BASE_URL ?? "/camaranja/",
     prerender: {
@@ -95,6 +96,7 @@ export default defineNuxtConfig({
     },
   },
 
+  // Configuración de Schema.org
   schemaOrg: {
     identity: {
       type: "Person",
@@ -104,5 +106,6 @@ export default defineNuxtConfig({
     },
   },
 
+  // Fecha de compatibilidad
   compatibilityDate: "2024-09-23",
 });
