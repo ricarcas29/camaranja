@@ -8,13 +8,13 @@ export default defineNuxtConfig({
 
   ssr: true,
 
-  extends: process.env.NUXT_STUDIO_ENABLE ? '@nuxthq/studio' : undefined,
+  extends: process.env.NUXT_STUDIO_ENABLE ? "@nuxthq/studio" : undefined,
 
   htmlAttrs: {
     lang: "es",
   },
 
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon", "@nuxthq/studio"],
 
   image: {
     inject: true,
