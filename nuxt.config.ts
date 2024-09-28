@@ -12,7 +12,7 @@ export default defineNuxtConfig({
     lang: "es",
   },
 
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon", "@nuxthq/studio"],
 
   image: {
     inject: true,
@@ -37,7 +37,9 @@ export default defineNuxtConfig({
   },
 
   app: {
-    //baseURL: '/camaranja/',
+    baseURL: process.env.NODE_ENV === "production" ? process.env.BASE_URL || "/camaranja/" : "/",
+    buildAssetsDir: "/nuxt/",
+
     head: {
       link: [
         {
