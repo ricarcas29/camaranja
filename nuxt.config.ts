@@ -7,6 +7,7 @@ dotenv.config()
 export default defineNuxtConfig({
   pages: true,
 
+
   ssr: true,
 
   htmlAttrs: {
@@ -46,6 +47,7 @@ export default defineNuxtConfig({
   },
 
   app: {
+    baseURL: '/camaranja/',
     head: {
       link: [
         {
@@ -92,7 +94,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    baseURL: process.env.BASE_URL,
+    baseURL: process.env.BASE_URL ?? "/camaranja/",
     prerender: {
       crawlLinks: true,
       failOnError: false, 
@@ -105,7 +107,7 @@ export default defineNuxtConfig({
     identity: {
       type: "Person",
       name: "Kenia Espinoza Alba",
-      url: process.env.BASE_URL,
+      url: process.env.BASE_URL ?? "/camaranja/",
       logo: "img/logo.jpg",
     },
   },
