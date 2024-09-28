@@ -4,16 +4,47 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export default defineNuxtConfig({
+  experimental: {
+    asyncEntry: true,
+  },
   pages: true,
   ssr: true,
-
+  target: "static",
   build: {
+    extractCSS: true,
+    hardSource: true,
+    parallel: true,
+    cache: true,
+    terser: {
+      terserOptions: {
+        compress: {
+          drop_console: true,
+        },
+      },
+    },
+    analyze: true, // Ayuda a identificar paquetes grandes
     extractCSS: true,
     optimization: {
       splitChunks: {
         layouts: true,
         pages: true,
         commons: true,
+        chunks: "all",
+        automaticNameDelimiter: ".",
+        name: undefined,
+        cacheGroups: {},
+      },
+    },
+    babel: {
+      presets({ isServer }) {
+        return [
+          [
+            "@nuxt/babel-preset-app",
+            {
+              corejs: { version: 3 },
+            },
+          ],
+        ];
       },
     },
     transpile: ["vue-lazy-hydration", "intersection-observer"],
@@ -39,18 +70,17 @@ export default defineNuxtConfig({
     compressor: {
       threshold: 0,
     },
+    resourceHints: true,
+    crossorigin: "anonymous",
   },
-
   htmlAttrs: {
     lang: "es",
   },
-
   modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon" /*"@nuxthq/studio"*/],
-
   // Configuración de imágenes
   image: {
     inject: true,
-    format: ["webp"],
+    format: ["webp", "avif", "jpg"],
     domains: ["localhost", "camaranja.nuxt.space.com"],
     dir: "public",
     presets: {
@@ -60,10 +90,21 @@ export default defineNuxtConfig({
         },
       },
     },
-  },
 
+    screens: {
+      xs: 320,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+      xxl: 1536,
+      "2xl": 1536,
+    },
+    densities: [1, 2],
+  },
   // Configuración de la aplicación
   app: {
+    pageTransition: { name: "page", mode: "out-in" },
     baseURL: process.env.NUXT_APP_BASE_URL || "/camaranja/",
     buildAssetsDir: "/_nuxt/",
     head: {
@@ -80,10 +121,15 @@ export default defineNuxtConfig({
           href: "https://fonts.googleapis.com/css2?Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,400;0,600;0,700;1,400&display=swap",
           rel: "stylesheet",
         },
+        {
+          rel: "preload",
+          as: "font",
+          href: "https://fonts.googleapis.com/css2?Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Poppins:ital,wght@0,100;0,400;0,600;0,700;1,400&display=swap",
+          crossorigin: "anonymous",
+        },
       ],
     },
   },
-
   // Configuración del contenido
   content: {
     documentDriven: true,
@@ -91,23 +137,19 @@ export default defineNuxtConfig({
       anchorLinks: false,
     },
   },
-
   // Configuración del modo oscuro
   colorMode: {
     classSuffix: "",
   },
-
   // Configuración de Tailwind CSS
   tailwindcss: {
     cssPath: "./assets/css/tailwind.css",
   },
-
   // Configuración de iconos
   icon: {
     size: [16, 32, 120],
     purpose: ["any", "maskable"],
   },
-
   // Información del sitio
   site: {
     url: process.env.BASE_URL,
@@ -118,6 +160,7 @@ export default defineNuxtConfig({
 
   // Configuración de Nitro para la generación estática
   nitro: {
+    compressPublicAssets: true,
     prerender: {
       crawlLinks: true,
       routes: ["/"],
