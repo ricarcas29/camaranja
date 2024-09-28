@@ -8,11 +8,15 @@ export default defineNuxtConfig({
 
   ssr: true,
 
+  $production: {
+    extends: ["@nuxthq/studio"],
+  },
+
   htmlAttrs: {
     lang: "es",
   },
 
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon", "@nuxthq/studio"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon"],
 
   image: {
     inject: true,
@@ -37,8 +41,8 @@ export default defineNuxtConfig({
   },
 
   app: {
-    baseURL: process.env.NODE_ENV === "production" ? process.env.BASE_URL || "/camaranja/" : "/",
-    buildAssetsDir: "/nuxt/",
+    //baseURL: process.env.NODE_ENV === "production" ? process.env.BASE_URL || "/camaranja/" : "/",
+    buildAssetsDir: "/_nuxt/",
 
     head: {
       link: [
