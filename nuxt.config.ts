@@ -7,11 +7,11 @@ export default defineNuxtConfig({
   pages: true,
   ssr: true,
 
-  // Extender Nuxt Studio si está habilitado
-  $production: {
-    extends: process.env.NUXT_STUDIO_ENABLE ? "@nuxthq/studio" : undefined,
-    ssr: true,
-  },
+  // // Extender Nuxt Studio si está habilitado
+  // $production: {
+  //   extends: process.env.NUXT_STUDIO_ENABLE ? "@nuxthq/studio" : undefined,
+  //   ssr: true,
+  // },
 
   htmlAttrs: {
     lang: "es",
