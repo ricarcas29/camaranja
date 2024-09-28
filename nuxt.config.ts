@@ -8,9 +8,7 @@ export default defineNuxtConfig({
 
   ssr: true,
 
-  $production: {
-    extends: ["@nuxthq/studio"],
-  },
+  extends: process.env.NUXT_STUDIO_ENABLE ? '@nuxthq/studio' : undefined,
 
   htmlAttrs: {
     lang: "es",
