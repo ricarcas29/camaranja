@@ -34,3 +34,30 @@ onUnmounted(() => {
     <slot />
   </div>
 </template>
+
+<style>
+.pswp img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.watermark-container {
+  position: relative;
+  display: inline-block;
+}
+
+.watermark-container img {
+  display: block;
+}
+
+.watermark {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px;
+  font-size: 12px;
+  pointer-events: none;
+}
+</style>

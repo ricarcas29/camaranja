@@ -27,7 +27,7 @@ defineProps({
         <div class="dark:text-zinc-400 flex flex-col gap-4">
           <slot name="description"></slot>
         </div>
-        <NuxtImg src="/img/home/sign.png" alt="signature" class="h-8 mr-auto" />
+        <!-- <NuxtImg src="/img/home/sign.png" alt="signature" class="h-8 mr-auto" /> -->
       </div>
 
       <div v-parallax 

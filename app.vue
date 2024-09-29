@@ -1,12 +1,26 @@
 <template>
   <div>
-      <NuxtLoadingIndicator />
-      <NuxtPage />
+    <NuxtLoadingIndicator />
+    <NuxtPage />
   </div>
 </template>
 
 <script setup lang="ts">
 import { useHead } from "@vueuse/head";
+
+const { page } = useContent();
+if (page.value) {
+  defineOgImage({
+    component: "default",
+    title: page.value.title,
+    description: page.value.description,
+    layout: page.value.layout,
+    cover: page.value.cover,
+    author: page.value.author,
+    date: page.value.date,
+    ...(page.value.ogImage || {}),
+  });
+}
 useHead({
   title: "Portfolio",
   htmlAttrs: {

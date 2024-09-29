@@ -4,12 +4,20 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export default defineNuxtConfig({
-  experimental: {
-    asyncEntry: true,
-  },
   pages: true,
   ssr: true,
   target: "static",
+  experimental: {
+    asyncEntry: true,
+  },
+  ogImage: {
+    defaults: {
+      component: "ogImage",
+    },
+  },
+  routeRules: {
+    "/**": { ssr: true }, // Habilita el SSR para todas las rutas
+  },
   build: {
     extractCSS: true,
     hardSource: true,
@@ -76,7 +84,7 @@ export default defineNuxtConfig({
   htmlAttrs: {
     lang: "es",
   },
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon" /*"@nuxthq/studio"*/],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon", "@nuxtjs/seo"],
   // Configuración de imágenes
   image: {
     inject: true,
@@ -147,8 +155,7 @@ export default defineNuxtConfig({
   },
   // Configuración de iconos
   icon: {
-    size: [16, 32, 120],
-    purpose: ["any", "maskable"],
+    size: [16, 24, 32, 120],
   },
   // Información del sitio
   site: {
