@@ -17,9 +17,16 @@ defineProps({
 </script>
 
 <template>
-  <div class="not-prose relative pt-14 pb-10 lg:mt-32 lg:pb-24">
-    <div class="absolute top-0 left-0 pointer-events-none w-full text-clip overflow-hidden" :class="[orientation === 'center' ? 'flex justify-center' : '']" v-parallax data-rellax-speed="4">
-      <span class="text-[9rem] lg:text-[10rem] font-display text-zinc-900 dark:text-zinc-50 opacity-2 truncate">{{ title }}</span>
+  <div class="not-prose relative pt-14 pb-10 lg:mt-28 lg:pb-24">
+    <div class="absolute top-0 left-0 pointer-events-none w-full text-clip overflow-hidden" :class="[orientation === 'center' ? 'flex justify-center' : '']" v-parallax data-rellax-speed="2">
+      <span 
+      :class="[
+        'font-display text-zinc-900 dark:text-zinc-50 opacity-2 text-center w-full',
+        title.length > 10 ? 'text-[6rem] lg:text-[7rem]' : 'text-[9rem] lg:text-[10rem]'
+      ]"
+      >
+      {{ title }}
+      </span>
     </div>
     <div>
       <template v-if="orientation === 'left'">

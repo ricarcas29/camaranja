@@ -51,7 +51,7 @@ galleries.value = _galleries.value || [];
     <GalleryListItem v-for="(gallery, index) in galleries" :key="index" :gallery="gallery" />
   </div>
   <div v-show="!galleries.length && !error" class="text-center">
-    <p>No galleries found.</p>
+    <p>No se han encontrado galerias.</p>
   </div>
   <div v-if="error" class="text-center text-red-500">
     <p>{{ error }}</p>

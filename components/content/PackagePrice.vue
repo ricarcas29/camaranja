@@ -44,6 +44,6 @@ interface Props {
 
 withDefaults(defineProps<Props>(), {
   description: "",
-  currency: "USD",
+  currency: "MXN",
 });
 </script>

@@ -6,6 +6,7 @@ const props = defineProps({
     cover: String,
     author: Object,
 });
+console.log(props);
 
 const twitter = props.author?.link?.replace("https://twitter.com/", "@");
 </script>
