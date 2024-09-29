@@ -15,7 +15,7 @@ const twitter = props.author?.link?.replace("https://twitter.com/", "@");
         class="w-full h-full flex flex-col items-center justify-center text-white bg-gray-900 p-8"
     >
         <div class="px-5 py-3 rounded absolute bottom-10 bg-white right-10">
-            <img src="/logo.svg" width="99" height="29" />
+            <img src="/img/logo.jpg" width="99" height="29" />
         </div>
         <div class="pb-10 flex flex-col items-center">
             <img
