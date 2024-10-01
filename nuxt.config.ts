@@ -18,6 +18,7 @@ export default defineNuxtConfig({
     "/**": { ssr: true },
   },
   build: {
+    publicPath: "/_nuxt/",
     extractCSS: true,
     hardSource: true,
     parallel: true,
