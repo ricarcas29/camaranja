@@ -1,3 +1,0 @@
-{
-  "rewrites": [{ "source": "/camaranja/:path*", "destination": "/:path*" }]
-}
