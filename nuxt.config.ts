@@ -7,16 +7,12 @@ export default defineNuxtConfig({
   pages: true,
   ssr: true,
   router: {
-    base: '/'
+    base: "/",
   },
   target: "static",
   experimental: {
     asyncEntry: true,
-  },
-  ogImage: {
-    defaults: {
-      component: "ogImage",
-    },
+    payloadExtraction: false,
   },
   routeRules: {
     "/**": { ssr: true },
@@ -69,16 +65,7 @@ export default defineNuxtConfig({
   htmlAttrs: {
     lang: "es",
   },
-  modules: [
-    "@nuxtjs/tailwindcss",
-    "@nuxt/image-edge",
-    "nuxt-headlessui",
-    "@nuxt/content",
-    "@vueuse/nuxt",
-    "@nuxtjs/color-mode",
-    "@nuxt/icon",
-    "@nuxtjs/seo",
-  ],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon", "@nuxtjs/seo"],
   image: {
     inject: true,
     format: ["webp", "avif", "jpg"],
@@ -104,7 +91,7 @@ export default defineNuxtConfig({
   },
   app: {
     pageTransition: { name: "page", mode: "out-in" },
-    baseURL: '/',
+    baseURL: "/",
     buildAssetsDir: "/_nuxt/",
     head: {
       link: [
@@ -128,6 +115,8 @@ export default defineNuxtConfig({
   },
   icon: {
     size: [16, 24, 32, 120],
+    purpose: ["any", "maskable"],
+    types: ["image/png", "image/svg+xml", "image/webp", "image/avif", "image/jpeg"],
   },
   site: {
     url: process.env.BASE_URL,
@@ -150,6 +139,9 @@ export default defineNuxtConfig({
       url: "/",
       logo: "img/logo.jpg",
     },
+  },
+  generate: {
+    fallback: true,
   },
   ...(process.env.NUXT_STUDIO_ENABLE ? { extends: "@nuxthq/studio" } : {}),
   compatibilityDate: "2024-09-23",
