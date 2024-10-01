@@ -6,6 +6,9 @@ dotenv.config();
 export default defineNuxtConfig({
   pages: true,
   ssr: true,
+  router : {
+    base: process.env.NUXT_APP_BASE_URL || "/camaranja/",
+  },
   target: "static",
   experimental: {
     asyncEntry: true,
@@ -87,9 +90,10 @@ export default defineNuxtConfig({
   modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon", "@nuxtjs/seo"],
   // Configuración de imágenes
   image: {
+
     inject: true,
     format: ["webp", "avif", "jpg"],
-    domains: ["localhost", "camaranja.nuxt.space.com"],
+    domains: ["localhost", "camaranja.nuxt.space.com","camaranja-portfolio.vercel.app/"],
     dir: "public",
     presets: {
       default: {
@@ -170,7 +174,7 @@ export default defineNuxtConfig({
     compressPublicAssets: true,
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/galleries", "/stories", "/hire-me"],
+      routes: ["/camaranja", "/galleries", "/stories", "/hire-me"],
       failOnError: false,
     },
   },
@@ -180,7 +184,7 @@ export default defineNuxtConfig({
     identity: {
       type: "Person",
       name: "Kenia Espinoza Alba",
-      url: process.env.BASE_URL ?? "/camaranja/",
+      url: process.env.NUXT_APP_BASE_URL ?? "/camaranja/",
       logo: "img/logo.jpg",
     },
   },
