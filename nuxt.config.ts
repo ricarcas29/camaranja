@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   router: {
     base: "/",
   },
-  target: "static",
+  target: "server",
   experimental: {
     asyncEntry: true,
     payloadExtraction: false,
@@ -90,6 +90,7 @@ export default defineNuxtConfig({
     densities: [1, 2],
   },
   app: {
+    cdnURL: process.env.NUXT_APP_CDN_URL,
     pageTransition: { name: "page", mode: "out-in" },
     baseURL: "/",
     buildAssetsDir: "/_nuxt/",

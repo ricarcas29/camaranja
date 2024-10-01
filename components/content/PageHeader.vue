@@ -31,7 +31,7 @@ defineProps({
     <div>
       <template v-if="orientation === 'left'">
         <div class="max-w-xl">
-          <h1 class="font-thin font-display text-5xl text-gradient leading-tighter w-max max-w-full">{{ title }}</h1>
+          <h1 class="font-thin font-display text-6xl text-gradient leading-tighter w-max max-w-full">{{ title }}</h1>
         </div>
         <div class="max-w-2xl">
           <p class="mt-6 lg:mt-9 dark:text-zinc-500">
@@ -41,7 +41,7 @@ defineProps({
       </template>
       <template v-if="orientation === 'center'">
         <div class="max-w-xl mx-auto flex justify-center">
-          <h1 class="font-thin font-display text-5xl text-gradient leading-tighter text-center w-max">{{ title }}</h1>
+          <h1 class="font-display text-6xl text-gradient leading-tighter text-center w-max">{{ title }}</h1>
         </div>
         <div class="max-w-2xl mx-auto">
           <p class="mt-6 lg:mt-9 dark:text-zinc-500 text-center">
