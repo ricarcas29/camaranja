@@ -12,14 +12,14 @@ export default <RouterConfig>{
     
     return { top: 0 };
   },
-  routes: (_routes) => {
-    if (process.env.NUXT_APP_BASE_URL && process.env.NUXT_APP_BASE_URL !== '/') {
-      const baseRoutes = _routes.map(route => ({
-        ...route,
-        path: `${process.env.NUXT_APP_BASE_URL}${route.path}`
-      }));
-      return baseRoutes;
-    }
-    return _routes;
-  }
+  // routes: (_routes) => {
+  //   if (process.env.NUXT_APP_BASE_URL && process.env.NUXT_APP_BASE_URL !== '/') {
+  //     const baseRoutes = _routes.map(route => ({
+  //       ...route,
+  //       path: `${process.env.NUXT_APP_BASE_URL}${route.path}`
+  //     }));
+  //     return baseRoutes;
+  //   }
+  //   return _routes;
+  // }
 };

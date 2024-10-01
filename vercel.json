@@ -1,29 +1,15 @@
 {
   "version": 2,
-  "rewrites": [{ "source": "/(.*)", "destination": "/" }],
   "builds": [
     {
       "src": "nuxt.config.ts",
-      "use": "@nuxtjs/vercel-builder",
-      "config": {
-        "serverFiles": ["server/**"]
-      }
+      "use": "@nuxtjs/vercel-builder"
     }
   ],
   "routes": [
     {
-      "src": "/sw.js",
-      "continue": true,
-      "headers": {
-        "Cache-Control": "public, max-age=0, must-revalidate",
-        "Service-Worker-Allowed": "/"
-      }
-    },
-    {
-      "src": "/_nuxt/.+",
-      "headers": {
-        "Cache-Control": "public, max-age=31536000, immutable"
-      }
+      "src": "/(.*)",
+      "dest": "/"
     }
   ]
 }

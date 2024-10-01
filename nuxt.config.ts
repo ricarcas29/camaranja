@@ -6,6 +6,7 @@ dotenv.config();
 export default defineNuxtConfig({
   pages: true,
   ssr: true,
+
   router: {
     base: "/",
   },
@@ -93,7 +94,7 @@ export default defineNuxtConfig({
   app: {
     cdnURL: process.env.NUXT_APP_CDN_URL,
     pageTransition: { name: "page", mode: "out-in" },
-    baseURL: "/",
+    baseURL: process.env.NODE_ENV === "production" ? "/" : "/",
     buildAssetsDir: "/_nuxt/",
     head: {
       link: [
