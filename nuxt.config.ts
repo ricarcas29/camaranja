@@ -67,27 +67,7 @@ export default defineNuxtConfig({
   htmlAttrs: {
     lang: "es",
   },
-  modules: [
-    "@nuxtjs/tailwindcss",
-    "@nuxt/image-edge",
-    "nuxt-headlessui",
-    "@nuxt/content",
-    "@vueuse/nuxt",
-    "@nuxtjs/color-mode",
-    "@nuxt/icon",
-    "@nuxtjs/seo",
-    [
-      "nuxt-newsletter",
-      {
-        mailchimp: {
-          apiKey: process.env.MAILCHIMP_API_KEY ?? "",
-          serverPrefix: process.env.MAILCHIMP_SERVER_PREFIX ?? "",
-          audienceId: process.env.MAILCHIMP_AUDIENCE_ID ?? "",
-          component: true, // optional
-        },
-      },
-    ],
-  ],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon", "@nuxtjs/seo", "nuxt-newsletter"],
   image: {
     inject: true,
     format: ["webp", "avif", "jpg"],
@@ -196,6 +176,15 @@ export default defineNuxtConfig({
       description: "Conóceme, contáctame, ¡creemos recuerdos juntos!",
       image: "img/logo.jpg",
       url: process.env.BASE_URL,
+    },
+  },
+
+  newsletter: {
+    mailchimp: {
+      apiKey: process.env.MAILCHIMP_API_KEY ?? "asdasd",
+      serverPrefix: process.env.MAILCHIMP_SERVER_PREFIX,
+      audienceId: process.env.MAILCHIMP_AUDIENCE_ID,
+      component: true, // optional
     },
   },
 
