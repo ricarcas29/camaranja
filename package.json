@@ -33,6 +33,7 @@
     "@vueuse/core": "^11.1.0",
     "@vueuse/nuxt": "^11.1.0",
     "fe": "link:@iconify-json\\fe",
+    "nuxt-newsletter": "^0.2.0",
     "photoswipe": "^5.4.4",
     "rellax": "^1.12.1",
     "ufo": "^1.5.4"

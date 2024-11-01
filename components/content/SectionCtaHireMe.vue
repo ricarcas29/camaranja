@@ -13,9 +13,9 @@
         </div>
         <ul class="mt-16 flex flex-col gap-4 lg:gap-12 lg:flex-row items-center justify-center max-w-2xl mx-auto">
           <li>
-            <NuxtLink to="mailto:keniaespinoza@gmail.com" class="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-100">
+            <NuxtLink to="mailto:camaranja@gmail.com" class="flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-800 dark:text-zinc-400 dark:hover:text-zinc-100">
               <Icon name="heroicons:envelope-20-solid" size="1.8rem" />
-              <span>keniaespinoza@gmail.com</span>
+              <span>camaranja@gmail.com</span>
             </NuxtLink>
           </li>
           <li>

@@ -67,7 +67,7 @@ export default defineNuxtConfig({
   htmlAttrs: {
     lang: "es",
   },
-  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon", "@nuxtjs/seo"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxt/image-edge", "nuxt-headlessui", "@nuxt/content", "@vueuse/nuxt", "@nuxtjs/color-mode", "@nuxt/icon", "@nuxtjs/seo", "nuxt-newsletter"],
   image: {
     inject: true,
     format: ["webp", "avif", "jpg"],
@@ -146,6 +146,50 @@ export default defineNuxtConfig({
   generate: {
     fallback: true,
   },
-  ...(process.env.NUXT_STUDIO_ENABLE ? { extends: "@nuxthq/studio" } : {}),
+  newsletter: {
+    mailchimp: {
+      apiKey: process.env.MAILCHIMP_API_KEY,
+      serverPrefix: process.env.MAILCHIMP_SERVER_PREFIX,
+      audienceId: process.env.MAILCHIMP_AUDIENCE_ID,
+      component: true, // optional
+    },
+  },
+  seo: {
+    baseUrl: process.env.BASE_URL,
+    name: "Kenia Espinoza Alba Portafolio",
+    title: "Kenia Espinoza Alba Portafolio",
+    description: "Conóceme, contáctame, ¡creemos recuerdos juntos!",
+    image: "img/logo.jpg",
+    twitter: "@keniaespinozaalba",
+    facebook: "keniaespinozaalba",
+    locale: "es",
+    type: "website",
+    twitterCard: "summary_large_image",
+    twitterSite: "@keniaespinozaalba",
+    twitterCreator: "@keniaespinozaalba",
+    favicon: "img/logo.jpg",
+    robots: {
+      UserAgent: "*",
+      Disallow: "",
+    },
+    sitemap: {
+      hostname: process.env.BASE_URL,
+      exclude: ["/stories"],
+    },
+    openGraph: {
+      type: "website",
+      locale: "es",
+      site_name: "Kenia Espinoza Alba Portfolio",
+      title: "Kenia Espinoza Alba Portfolio",
+      description: "Conóceme, contáctame, ¡creemos recuerdos juntos!",
+      image: "img/logo.jpg",
+      url: process.env.BASE_URL,
+    },
+  },
+
+  hcaptcha: {
+    siteKey: process.env.HCAPTCHA_SITE_KEY,
+  },
+  // ...(process.env.NUXT_STUDIO_ENABLE ? { extends: "@nuxthq/studio" } : {}),
   compatibilityDate: "2024-09-23",
 });

@@ -19,40 +19,24 @@ export default {
     `${srcDir}/nuxt.config.{js,ts}`,
   ],
   plugins: [
-    // Doc: https://tailwindcss.com/docs/typography-plugin
     typography,
-
-    /**
-     * The following plugin adds support for the `content-visibility` property
-     * https://web.dev/content-visibility/
-     * https://developer.mozilla.org/en-US/docs/Web/CSS/content-visibility
-     * https://developer.mozilla.org/en-US/docs/Web/CSS/contain-intrinsic-size
-     */
     plugin(
       function ({ matchUtilities, theme }) {
         matchUtilities(
           {
-            "content-visibility": (value) => {
-              return {
-                "content-visibility": value,
-              };
-            },
+            "content-visibility": (value) => ({
+              "content-visibility": value,
+            }),
           },
-          {
-            values: theme("contentVisibility"),
-          }
+          { values: theme("contentVisibility") }
         );
         matchUtilities(
           {
-            "contain-intrinsic-size": (value) => {
-              return {
-                "contain-intrinsic-size": value,
-              };
-            },
+            "contain-intrinsic-size": (value) => ({
+              "contain-intrinsic-size": value,
+            }),
           },
-          {
-            values: theme("containIntrinsicSize"),
-          }
+          { values: theme("containIntrinsicSize") }
         );
       },
       {
@@ -61,6 +45,10 @@ export default {
             auto: "auto",
             hidden: "hidden",
             visible: "visible",
+          },
+          containIntrinsicSize: {
+            none: "none",
+            auto: "auto",
           },
         },
       }
@@ -91,5 +79,16 @@ export default {
         "pulse-once": "pulse-once 0.5s cubic-bezier(0.4, 0, 0.6, 1) 1s 2",
       },
     },
+  },
+  variants: {
+    extend: {
+      display: ["group-hover"],
+      opacity: ["disabled"],
+      backgroundColor: ["active"],
+    },
+  },
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
   },
 };
