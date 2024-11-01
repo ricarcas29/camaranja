@@ -77,7 +77,15 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxtjs/seo",
     [
-      "nuxt-newsletter",{}
+      "nuxt-newsletter",
+      {
+        mailchimp: {
+          apiKey: process.env.MAILCHIMP_API_KEY ?? "",
+          serverPrefix: process.env.MAILCHIMP_SERVER_PREFIX ?? "",
+          audienceId: process.env.MAILCHIMP_AUDIENCE_ID ?? "",
+          component: true, // optional
+        },
+      },
     ],
   ],
   image: {
@@ -157,14 +165,6 @@ export default defineNuxtConfig({
   },
   generate: {
     fallback: true,
-  },
-  newsletter: {
-    mailchimp: {
-      apiKey: process.env.MAILCHIMP_API_KEY ?? "",
-      serverPrefix: process.env.MAILCHIMP_SERVER_PREFIX ?? "",
-      audienceId: process.env.MAILCHIMP_AUDIENCE_ID ?? "",
-      component: true, // optional
-    },
   },
   seo: {
     baseUrl: process.env.BASE_URL,
